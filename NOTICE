@@ -1,0 +1,15 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: password_cracking
+Source: https://gitlab.com/CBDS/estp_2021/password_cracking
+
+Files: john.conf
+Copyright: 1996-2006,2008-2013,2019 by Solar Designer
+Source: https://cvsweb.openwall.com/cgi/cvsweb.cgi/Owl/packages/john/john/run/john.conf
+License: cut-down BSD
+         Redistribution and use in source and binary forms, with or without
+         modification, are permitted.
+         There's ABSOLUTELY NO WARRANTY, express or implied.
+
+Files: *
+Copyright: 2021 Ole Mussmann <bo.mussmann@cbs.nl>
+License: MIT
