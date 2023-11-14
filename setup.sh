@@ -17,20 +17,21 @@ head -n 100 google-10000-english.txt > google-100-english.txt
 
 cd ..
 
+echo "Installing tools and drivers"
+apt-get -y install git build-essential libssl-dev zlib1g-dev nvidia-opencl-dev nvidia-driver-545
+
 echo "Downloading John The Ripper password cracker ..."
-# download John The Ripper password cracker
-wget https://www.openwall.com/john/k/john-1.9.0-jumbo-1.tar.xz
-tar xf john-1.9.0-jumbo-1.tar.xz
-rm john-1.9.0-jumbo-1.tar.xz
+git clone https://github.com/openwall/john -b bleeding-jumbo john
 
 echo "Compiling John The Ripper password cracker ..."
 # compile John The Ripper
-cd john-1.9.0-jumbo-1/src
-./configure && make
+cd john/src
+./configure && make -s clean
+make -s
 
 cd ../..
 
-cp john.conf john-1.9.0-jumbo-1/run
+cp john.conf john/run
 
 echo "Probing GPU for John The Ripper ..."
-$(pwd)/john-1.9.0-jumbo-1/run/john --list=opencl-devices
+$(pwd)/john/run/john --list=opencl-devices
